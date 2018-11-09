@@ -1,12 +1,9 @@
 <template>
   <section class="index-container">
     <div>
-      <h1 class="title">
-        <!-- {{ person.fields.name }} -->
-      </h1>
-      <h2 class="subtitle">
-        project
-      </h2>
+      <div class="picture">
+        <!-- <img :src="person.fields.image.fields.file.url + '?w=1200'"> -->
+      </div>
 
       <section class="index">
 
@@ -66,6 +63,24 @@ export default {
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
+}
+
+.picture {
+  /* position: absolute; */
+  /* z-index: 2; */
+  /* top: 0; */
+  /* bottom: 0; */
+  /* left: 0%; */
+  /* right: 0; */
+  /* width: 150%; */
+  height: calc(100vh - 50px);
+  background: #ccc;
+}
+@media all and (min-width: 600px) {
+  .picture {
+    /* left: 20%; */
+    width: 100%;
+  }
 }
 
 .title {

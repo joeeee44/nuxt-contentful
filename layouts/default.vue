@@ -38,7 +38,7 @@ body {
 
 .container {
   min-height: calc(100vh - 100px);
-  padding: 5px;
+  /* padding: 5px; */
 }
 
 .slide-left-enter {

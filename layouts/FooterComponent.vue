@@ -1,6 +1,6 @@
 <template>
   <footer>
-    <p class="produced">title</p>
+    <p class="produced">nuxt-contentful</p>
   </footer>
 </template>
 

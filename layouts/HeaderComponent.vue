@@ -1,7 +1,7 @@
 <template>
   <header>
     <nuxt-link to="/">
-      <h1 class="header-title">title</h1>
+      <h1 class="header-title">nuxt-contentful</h1>
     </nuxt-link>
   </header>
 </template>
