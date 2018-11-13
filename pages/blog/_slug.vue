@@ -1,28 +1,41 @@
 <template>
   <section class="slug">
-    <h1 class="slug_title">{{ post.fields.title }}</h1>
-    <p class="slug_date">
-      {{ new Date(post.fields.publishedAt).toLocaleDateString() }}
-    </p>
-    <div class="wrapper-image">
-      <img
-        :src="post.fields.headerImage.fields.file.url"
-        class="slug_image">
-    </div>
-    <vue-markdown>{{ post.fields.body }}</vue-markdown>
+
+    <!-- <h1 class="slug_title">{{ post.fields.title }}</h1> -->
+    <!-- <p class="slug_date"> -->
+    <!--   {{ new Date(post.fields.publishedAt).toLocaleDateString() }} -->
+    <!-- </p> -->
+    <!-- <div class="wrapper&#45;image"> -->
+    <!--   <img -->
+    <!--     :src="post.fields.headerImage.fields.file.url" -->
+    <!--     class="slug_image"> -->
+    <!-- </div> -->
+    <markdown>
+      <div v-html="$md.render(post.fields.body)"/>
+    </markdown>
+
   </section>
 </template>
 
 <script>
-import VueMarkdown from 'vue-markdown'
 import { createClient } from '~/plugins/contentful.js'
+import markdown from '~/components/Markdown.vue'
 
 const client = createClient()
+
 export default {
-  transition: 'slide-left',
   components: {
-    VueMarkdown
+    markdown
   },
+  data() {
+    return {
+      model: '# Hello World!'
+    }
+  },
+  transition: 'slide-left',
+  // computed: {
+  //
+  // },
   async asyncData({ env, params }) {
     return await client
       .getEntries({
@@ -44,6 +57,7 @@ export default {
 .slug {
   max-width: 800px;
   margin: 0 auto;
+  padding: 10px;
   .wrapper-image {
     text-align: center;
     img {

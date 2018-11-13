@@ -4,6 +4,7 @@ const config = require('./.contentful.json')
 
 module.exports = {
   mode: 'universal',
+  // mode: 'spa',
 
   env: {
     CTF_SPACE_ID: config.CTF_SPACE_ID,
@@ -45,7 +46,8 @@ module.exports = {
   */
   modules: [
     // Doc: https://github.com/nuxt-community/axios-module#usage
-    '@nuxtjs/axios'
+    // '@nuxtjs/axios',
+    '@nuxtjs/markdownit'
   ],
   /*
   ** Axios module configuration
@@ -53,6 +55,30 @@ module.exports = {
   axios: {
     // See https://github.com/nuxt-community/axios-module#options
   },
+
+  markdownit: {
+    injected: true, // $mdを利用してmarkdownをhtmlにレンダリングする
+    breaks: true, // 改行コードを<br>に変換する
+    html: true, // HTML タグを有効にする
+    linkify: true, // URLに似たテキストをリンクに自動変換する
+    typography: true, // 言語に依存しないきれいな 置換 + 引用符 を有効にします。
+    use: [
+      'markdown-it-toc' // 目次を作るためのライブラリ。別途インストールが必要
+    ]
+  },
+
+  // markdownit: {
+  //   html: true,
+  //   injected: true,
+  //   preset: 'default',
+  //   linkify: true,
+  //   breaks: true,
+  //   use: [
+  //     // 'markdown-it-highlightjs'
+  //     // ['markdown-it-container', containerName],
+  //     // 'markdown-it-attrs'
+  //   ]
+  // },
 
   /*
   ** Build configuration
