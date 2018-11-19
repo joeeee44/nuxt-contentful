@@ -10,23 +10,21 @@
     <!--     :src="post.fields.headerImage.fields.file.url" -->
     <!--     class="slug_image"> -->
     <!-- </div> -->
-    <markdown>
-      <div v-html="$md.render(post.fields.body)"/>
-    </markdown>
+    <no-ssr>
+      <markdown>
+        <div v-html="$md.render(post.fields.body)"/>
+      </markdown>
+    </no-ssr>
 
   </section>
 </template>
 
 <script>
 import { createClient } from '~/plugins/contentful.js'
-import markdown from '~/components/Markdown.vue'
 
 const client = createClient()
 
 export default {
-  components: {
-    markdown
-  },
   data() {
     return {
       model: '# Hello World!'

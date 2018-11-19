@@ -1,16 +1,26 @@
 <template>
   <section class="index-container">
     <div>
-      <div class="picture">
-        <!-- <img :src="person.fields.image.fields.file.url + '?w=1200'"> -->
-      </div>
+
+      <!-- <img :src="image_path(image1)"> -->
+      <!-- <div -->
+      <!--   :style="{ 'background&#45;image': 'url(' + image_path(image1) + ')' }" -->
+      <!--   class="picture"/> -->
 
       <section class="index">
 
-        <card
-          v-for="post in posts"
-          v-bind="post.fields"
-          :key="post.fields.slug"/>
+        <!-- <ul -->
+        <!--   v&#45;for="post in posts" -->
+        <!--   :key="post.fields.slug"> -->
+        <!--   <li>{{ post.fields.headerImage }}</li> -->
+        <!-- </ul> -->
+
+        <no-ssr>
+          <card
+            v-for="post in posts"
+            v-bind="post.fields"
+            :key="post.fields.slug"/>
+        </no-ssr>
 
       </section>
     </div>
@@ -19,7 +29,6 @@
 
 <script>
 import { createClient } from '~/plugins/contentful.js'
-import Card from '~/components/card.vue'
 
 const client = createClient()
 
@@ -48,8 +57,15 @@ export default {
       .catch(console.error)
   },
   transition: 'slide-left',
-  components: {
-    Card
+  computed: {
+    image1() {
+      return this.$store.state.image1
+    }
+  },
+  methods: {
+    image_path(path) {
+      return require('@/assets/images/' + path)
+    }
   }
 }
 </script>
@@ -60,26 +76,26 @@ export default {
 }
 
 .index {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
+  /* display: flex; */
+  /* flex-wrap: wrap; */
+  /* justify-content: center; */
 }
 
 .picture {
-  /* position: absolute; */
-  /* z-index: 2; */
-  /* top: 0; */
-  /* bottom: 0; */
-  /* left: 0%; */
-  /* right: 0; */
-  /* width: 150%; */
-  height: calc(100vh - 50px);
-  background: #ccc;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+  width: 100%;
+  max-width: 500px;
+  height: 500px;
+  margin: 0 auto;
 }
 @media all and (min-width: 600px) {
   .picture {
-    /* left: 20%; */
-    width: 100%;
+    /* background-repeat: no-repeat; */
+    /* background-position: center; */
+    /* background-size: cover; */
+    /* width: 100%; */
   }
 }
 
