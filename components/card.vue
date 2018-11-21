@@ -54,7 +54,7 @@ export default {
 
 <style lang="scss" scoped>
 .card {
-  width: 500px;
+  max-width: 800px;
   height: 150px;
   text-align: left;
   // box-shadow: 1px 2px 3px 1px rgba(0, 0, 0, 0.2);

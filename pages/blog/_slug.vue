@@ -31,9 +31,6 @@ export default {
     }
   },
   transition: 'slide-left',
-  // computed: {
-  //
-  // },
   async asyncData({ env, params }) {
     return await client
       .getEntries({
