@@ -2,6 +2,15 @@
   <section class="slug">
 
     <!-- <h1 class="slug_title">{{ post.fields.title }}</h1> -->
+
+    <div class="flex-tag-date">
+      <div
+        v-for="(tag, index) in post.fields.tags"
+        :key="index.id">
+        <div class="tag">{{ tag }}</div>
+      </div>
+    </div>
+
     <!-- <p class="slug_date"> -->
     <!--   {{ new Date(post.fields.publishedAt).toLocaleDateString() }} -->
     <!-- </p> -->
@@ -63,6 +72,19 @@ export default {
 .slug_title {
   font-size: 2rem;
   font-weight: bolder;
+}
+.flex-tag-date {
+  display: flex;
+  justify-content: flex-end;
+  .tag {
+    font-size: 0.8rem;
+    color: #fff;
+    background: #00bc7e;
+    padding: 5px 10px;
+    height: 30px;
+    border-radius: 5px;
+    margin-right: 5px;
+  }
 }
 .slug_date {
   font-size: 1rem;

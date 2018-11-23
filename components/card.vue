@@ -1,8 +1,12 @@
 <template>
   <article class="card">
+
     <nuxt-link
       :to="{ name: 'blog-slug', params: { slug: slug }}"
       class="wrapper">
+      <!-- <div -->
+      <!--   class="wrapper" -->
+      <!--   @click="test($md.render(body))"> -->
 
       <template v-if="headerImage.fields">
         <!-- <img -->
@@ -12,12 +16,32 @@
       <template v-else>
         <!-- <p>nai</p> -->
       </template>
-      <h1 class="title">{{ title }}</h1>
+
+      <h1 class="title">{{ title.substr(0, 75) }}</h1>
+      <!-- <div -->
+      <!--   id="str" -->
+      <!--   class="body" -->
+      <!--   v&#45;html="$md.render(body)"/> -->
       <div
-        class="body"
-        v-html="$md.render(body)"/>
-      <div class="date">{{ new Date(publishedAt).toLocaleDateString() }}</div>
+        id="str"
+        :text-content.prop="body"
+        class="body"/>
+
+      <div class="flex-tag-date">
+        <template v-if="tags">
+          <div
+            v-for="(tag, index) in tags"
+            :key="index.id">
+            <div class="tag">{{ tag }}</div>
+          </div>
+        </template>
+        <template v-else/>
+        <div class="date">{{ new Date(publishedAt).toLocaleDateString() }}</div>
+      </div>
+
     </nuxt-link>
+    <!-- </div> -->
+
   </article>
 </template>
 
@@ -27,6 +51,12 @@ export default {
     slug: {
       type: String,
       default: 'slug'
+    },
+    tags: {
+      type: Array,
+      default: () => {
+        return []
+      }
     },
     title: {
       type: String,
@@ -40,13 +70,35 @@ export default {
       type: Object,
       required: false,
       default: () => {
-        // return new MyObject()
-        return { message: 'hello' }
+        return {}
       }
     },
     publishedAt: {
       type: String,
       default: new Date()
+    }
+  },
+  computed: {
+    html() {
+      const html = this.$md.render(this.body)
+      // console.log(html)
+      // const text = html.textContent
+      // console.log(text)
+      // const text = document.getElementById(html).textContent
+      return html
+    },
+
+    text() {
+      return this.$el.textContent
+    }
+  },
+  methods: {
+    test(html) {
+      // console.log(html)
+      // const text = document.getElementById('str').textContent
+      const text = html.textContent()
+      // const text = html
+      console.log(text)
     }
   }
 }
@@ -55,12 +107,10 @@ export default {
 <style lang="scss" scoped>
 .card {
   max-width: 800px;
-  height: 150px;
+  height: 135px;
   text-align: left;
-  // box-shadow: 1px 2px 3px 1px rgba(0, 0, 0, 0.2);
-  // border: 0.5px solid rgb(57, 72, 85);
-  border-bottom: 2px solid #ccc;
-  padding: 10px 20px;
+  box-shadow: 0 2px 2px -2px rgba(0, 0, 0, 0.15);
+  padding: 10px 20px 0 20px;
   margin: 0 auto;
 }
 .wrapper {
@@ -74,15 +124,31 @@ export default {
 }
 .body {
   font-size: 0.8rem;
-  max-height: 65px;
+  max-height: 40px;
   margin: 10px 0;
   overflow: hidden;
 }
-.date {
-  font-size: 0.7rem;
-  color: rgb(57, 72, 85);
-  margin: 10px 0;
-  text-align: right;
+.flex-tag-date {
+  display: flex;
+  justify-content: flex-end;
+  .tag {
+    font-size: 0.8rem;
+    color: #fff;
+    background: #00bc7e;
+    padding: 5px 10px;
+    height: 30px;
+    border-radius: 5px;
+    margin-right: 5px;
+  }
+  .date {
+    font-size: 0.8rem;
+    /* color: rgb(57, 72, 85); */
+    color: #fff;
+    background: #47494e;
+    padding: 5px 10px;
+    height: 30px;
+    border-radius: 5px;
+  }
 }
 .image {
   max-height: 100px;
