@@ -7,6 +7,14 @@
       <!--   :style="{ 'background&#45;image': 'url(' + image_path(image1) + ')' }" -->
       <!--   class="picture"/> -->
 
+      <input
+        v-model="param"
+        type="text"
+        class="search"
+        placeholder="search">
+
+      <!-- {{ filterEntries }} -->
+
       <section class="index">
 
         <!-- <ul -->
@@ -17,7 +25,7 @@
 
         <no-ssr>
           <card
-            v-for="post in posts"
+            v-for="post in filterEntries"
             v-bind="post.fields"
             :key="post.fields.slug"/>
         </no-ssr>
@@ -33,6 +41,11 @@ import { createClient } from '~/plugins/contentful.js'
 const client = createClient()
 
 export default {
+  data() {
+    return {
+      param: ''
+    }
+  },
   async asyncData({ env, params }) {
     return await client
       .getEntries({
@@ -50,6 +63,18 @@ export default {
   computed: {
     image1() {
       return this.$store.state.image1
+    },
+
+    filterEntries() {
+      const self = this
+      return self.posts.filter(entry => {
+        const result =
+          entry.fields.title.toLowerCase().indexOf(self.param.toLowerCase()) !==
+            -1 ||
+          entry.fields.body.toLowerCase().indexOf(self.param.toLowerCase()) !==
+            -1
+        return result
+      })
     }
   },
   methods: {
@@ -69,6 +94,20 @@ export default {
   /* display: flex; */
   /* flex-wrap: wrap; */
   /* justify-content: center; */
+}
+
+.search {
+  position: fixed;
+  top: 0;
+  right: 0;
+  border: 1px solid #47494e;
+  height: 30px;
+  border-radius: 15px;
+  margin: 10px;
+  padding: 10px;
+  outline: 0;
+  font-family: cursive;
+  font-size: 16px; /*iosだとこれより小さいとズームされる*/
 }
 
 .picture {

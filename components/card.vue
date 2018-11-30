@@ -29,10 +29,11 @@
 
       <div class="flex-tag-date">
         <template v-if="tags">
-          <div
-            v-for="(tag, index) in tags"
-            :key="index.id">
-            <div class="tag">{{ tag }}</div>
+          <div class="tags">
+            <div
+              v-for="(tag, index) in tags"
+              :key="index.id"
+              class="tag">{{ tag }}</div>
           </div>
         </template>
         <template v-else/>
@@ -79,27 +80,27 @@ export default {
     }
   },
   computed: {
-    html() {
-      const html = this.$md.render(this.body)
-      // console.log(html)
-      // const text = html.textContent
-      // console.log(text)
-      // const text = document.getElementById(html).textContent
-      return html
-    },
-
-    text() {
-      return this.$el.textContent
-    }
+    // html() {
+    //   const html = this.$md.render(this.body)
+    //   // console.log(html)
+    //   // const text = html.textContent
+    //   // console.log(text)
+    //   // const text = document.getElementById(html).textContent
+    //   return html
+    // },
+    //
+    // text() {
+    //   return this.$el.textContent
+    // }
   },
   methods: {
-    test(html) {
-      // console.log(html)
-      // const text = document.getElementById('str').textContent
-      const text = html.textContent()
-      // const text = html
-      console.log(text)
-    }
+    // test(html) {
+    //   // console.log(html)
+    //   // const text = document.getElementById('str').textContent
+    //   const text = html.textContent()
+    //   // const text = html
+    //   console.log(text)
+    // }
   }
 }
 </script>
@@ -107,10 +108,9 @@ export default {
 <style lang="scss" scoped>
 .card {
   max-width: 800px;
-  height: 135px;
   text-align: left;
   box-shadow: 0 2px 2px -2px rgba(0, 0, 0, 0.15);
-  padding: 10px 20px 0 20px;
+  padding: 20px;
   margin: 0 auto;
 }
 .wrapper {
@@ -119,32 +119,35 @@ export default {
 .title {
   font-size: 1.2rem;
   font-weight: bold;
-  max-height: 60px;
+  max-height: 28px;
   overflow: hidden;
 }
 .body {
   font-size: 0.8rem;
-  max-height: 40px;
-  margin: 10px 0;
+  color: #47494e;
+  max-height: 37px;
+  margin: 0 0 10px;
   overflow: hidden;
 }
 .flex-tag-date {
   display: flex;
-  justify-content: flex-end;
-  .tag {
-    font-size: 0.8rem;
-    color: #fff;
-    background: #00bc7e;
-    padding: 5px 10px;
-    height: 30px;
-    border-radius: 5px;
-    margin-right: 5px;
+  .tags {
+    display: flex;
+    width: 100%;
+    .tag {
+      font-size: 0.8rem;
+      color: #47494e;
+      background: #fff;
+      padding: 3px 15px;
+      height: 30px;
+      border: 1px solid #47494e;
+      border-radius: 15px;
+      margin-right: 5px;
+    }
   }
   .date {
     font-size: 0.8rem;
-    /* color: rgb(57, 72, 85); */
-    color: #fff;
-    background: #47494e;
+    color: #47494e;
     padding: 5px 10px;
     height: 30px;
     border-radius: 5px;

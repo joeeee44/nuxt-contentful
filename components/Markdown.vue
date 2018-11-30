@@ -17,6 +17,9 @@
   p {
     margin: 10px;
     color: #35495e;
+    img {
+      max-width: 760px;
+    }
   }
   h1 {
     font-size: 35px;
