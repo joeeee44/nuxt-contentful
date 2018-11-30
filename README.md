@@ -1,6 +1,16 @@
 # nuxt-contentful
 
-> My best Nuxt.js project
+> Nuxt.js x Contentful
+
+## Contentful
+Content model
+- Blog Post
+  - title / Short text
+  - tags / Short text, list
+  - slug / Short text
+  - body / Long text
+  - publishedAt / Date & time
+  - headerImage / Media
 
 ## Build Setup
 
