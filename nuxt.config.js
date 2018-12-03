@@ -57,10 +57,40 @@ module.exports = {
   modules: [
     // Doc: https://github.com/nuxt-community/axios-module#usage
     // '@nuxtjs/axios',
-    '@nuxtjs/markdownit'
+    '@nuxtjs/markdownit',
     // ['@nuxtjs/google-analytics', { id: 'UA-xxxxxxxxx-x' }],
     // ['@nuxtjs/google-tag-manager', { id: 'GTM-xxxxxxx', pageTracking: true }]
+    '@nuxtjs/sitemap'
   ],
+
+  sitemap: {
+    path: '/sitemap.xml',
+    hostname: 'https://xxx.com',
+    generate: true,
+    exclude: [
+      // '/admin'
+    ],
+    async routes() {
+      // contentful
+      const contentful = require('contentful')
+      const client = contentful.createClient({
+        space: ctfConfig.CTF_SPACE_ID,
+        accessToken: ctfConfig.CTF_CDA_ACCESS_TOKEN
+      })
+      const posts = await client.getEntries({
+        content_type: ctfConfig.CTF_BLOG_POST_TYPE_ID,
+        order: '-sys.createdAt'
+      })
+
+      let urls = []
+      posts.items.forEach((val, idx, arr) => {
+        urls[idx] = val.fields.slug
+      })
+
+      return urls
+    }
+  },
+
   /*
   ** Axios module configuration
   */
