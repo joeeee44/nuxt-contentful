@@ -19,6 +19,7 @@
     color: #35495e;
     img {
       max-width: 760px;
+      width: 100%;
     }
   }
   h1 {

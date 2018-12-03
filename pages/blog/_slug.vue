@@ -82,6 +82,7 @@ export default {
   padding: 10px;
   .tags {
     display: flex;
+    flex-flow: row wrap;
     width: 100%;
     .tag {
       font-size: 0.8rem;
@@ -92,6 +93,7 @@ export default {
       border: 1px solid #47494e;
       border-radius: 15px;
       margin-right: 5px;
+      margin-bottom: 5px;
     }
   }
   .date {
