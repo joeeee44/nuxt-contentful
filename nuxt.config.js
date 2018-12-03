@@ -23,13 +23,7 @@ module.exports = {
       { name: 'viewport', content: 'width=device-width, initial-scale=1' },
       { hid: 'description', name: 'description', content: pkg.description }
     ],
-    link: [
-      { rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' }
-      // {
-      //   rel: 'stylesheet',
-      //   href: 'https://fonts.googleapis.com/css?family=Noto+Sans+JP'
-      // }
-    ]
+    link: [{ rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' }]
   },
 
   webfontloader: {
@@ -46,7 +40,12 @@ module.exports = {
   /*
   ** Global CSS
   */
-  css: [],
+  css: [
+    {
+      src: '~/node_modules/highlight.js/styles/atom-one-dark.css',
+      lang: 'scss'
+    }
+  ],
 
   /*
   ** Plugins to load before mounting the App
@@ -65,9 +64,17 @@ module.exports = {
     '@nuxtjs/markdownit',
     // ['@nuxtjs/google-analytics', { id: 'UA-xxxxxxxxx-x' }],
     // ['@nuxtjs/google-tag-manager', { id: 'GTM-xxxxxxx', pageTracking: true }]
-    '@nuxtjs/sitemap'
+    '@nuxtjs/sitemap',
+    '@nuxtjs/pwa'
   ],
 
+  // @nuxtjs/pwa
+  manifest: {
+    name: 'nuxt-contentful',
+    lang: 'ja'
+  },
+
+  // @nuxtjs/sitemap
   sitemap: {
     path: '/sitemap.xml',
     hostname: 'https://xxx.com',
@@ -109,7 +116,7 @@ module.exports = {
     html: true,
     linkify: true,
     typography: true,
-    use: ['markdown-it-toc']
+    use: ['markdown-it-toc', 'markdown-it-highlightjs']
   },
 
   /*

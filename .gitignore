@@ -83,3 +83,6 @@ dist
 # API key
 .contentful.json
 .envrc
+
+# @nuxtjs/pwa
+sw.*
