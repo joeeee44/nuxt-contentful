@@ -85,7 +85,7 @@ export default {
 }
 </script>
 
-<style>
+<style lang="scss" scoped>
 .index-container {
   text-align: center;
 }

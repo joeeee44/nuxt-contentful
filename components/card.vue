@@ -121,6 +121,8 @@ export default {
   font-weight: bold;
   max-height: 28px;
   overflow: hidden;
+  color: #35495e;
+  letter-spacing: 1px;
 }
 .body {
   font-size: 0.8rem;
