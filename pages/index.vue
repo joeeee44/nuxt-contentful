@@ -90,11 +90,11 @@ export default {
   text-align: center;
 }
 
-.index {
-  /* display: flex; */
-  /* flex-wrap: wrap; */
-  /* justify-content: center; */
-}
+/* .index { */
+/*   display: flex; */
+/*   flex-wrap: wrap; */
+/*   justify-content: center; */
+/* } */
 
 .search {
   position: fixed;
@@ -119,14 +119,14 @@ export default {
   height: 500px;
   margin: 0 auto;
 }
-@media all and (min-width: 600px) {
-  .picture {
-    /* background-repeat: no-repeat; */
-    /* background-position: center; */
-    /* background-size: cover; */
-    /* width: 100%; */
-  }
-}
+/* @media all and (min-width: 600px) { */
+/*   .picture { */
+/*     background-repeat: no-repeat; */
+/*     background-position: center; */
+/*     background-size: cover; */
+/*     width: 100%; */
+/*   } */
+/* } */
 
 .title {
   display: block;

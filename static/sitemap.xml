@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:news="http://www.google.com/schemas/sitemap-news/0.9" xmlns:xhtml="http://www.w3.org/1999/xhtml" xmlns:mobile="http://www.google.com/schemas/sitemap-mobile/1.0" xmlns:image="http://www.google.com/schemas/sitemap-image/1.1" xmlns:video="http://www.google.com/schemas/sitemap-video/1.1">
+<url> <loc>https://xxx.com/nuxt-pwa</loc> </url>
+<url> <loc>https://xxx.com/nuxt-webfontloader</loc> </url>
+<url> <loc>https://xxx.com/nuxt-sitemap</loc> </url>
+<url> <loc>https://xxx.com/nuxt-markdownIt-highlight</loc> </url>
+<url> <loc>https://xxx.com/nuxt-seo</loc> </url>
+<url> <loc>https://xxx.com/nuxt-graphcms</loc> </url>
+<url> <loc>https://xxx.com/webpack</loc> </url>
+<url> <loc>https://xxx.com/nuxt-storybook</loc> </url>
+<url> <loc>https://xxx.com/alacritty</loc> </url>
+<url> <loc>https://xxx.com/git-checkout-conflict</loc> </url>
+<url> <loc>https://xxx.com/error-nuxt</loc> </url>
+<url> <loc>https://xxx.com/git-branch</loc> </url>
+<url> <loc>https://xxx.com/git-remote-branch-checkout</loc> </url>
+<url> <loc>https://xxx.com/nuxt-contentful</loc> </url>
+<url> <loc>https://xxx.com/nuxt.js-install</loc> </url>
+<url> <loc>https://xxx.com/</loc> </url>
+</urlset>
